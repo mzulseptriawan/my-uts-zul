@@ -2,20 +2,23 @@ package com.mzulsept.myutszul.fragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mzulsept.myutszul.api.ApiConfig
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.mzulsept.myutszul.DataItem
 import com.mzulsept.myutszul.MahasiswaAdapter
 import com.mzulsept.myutszul.R
 import com.mzulsept.myutszul.ResponseMahasiswa
+import com.mzulsept.myutszul.api.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +30,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [MahasiswaFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MahasiswaFragment : Fragment() {
+class MahasiswaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     // TODO: Rename and change types of parameters
     private lateinit var adapter: MahasiswaAdapter
     private lateinit var recyclerView: RecyclerView
@@ -39,6 +42,7 @@ class MahasiswaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_mahasiswa, container, false)
+        onRefresh()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,5 +79,9 @@ class MahasiswaFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onRefresh() {
+
     }
 }
