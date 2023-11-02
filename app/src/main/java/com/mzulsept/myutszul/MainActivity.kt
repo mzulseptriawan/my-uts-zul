@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.mzulsept.myutszul.fragment.MahasiswaFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView  // Mengganti import ini
+import com.mzulsept.myutszul.fragment.TekomFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mahasiswaFragment = MahasiswaFragment()
+        val tekomFragment = TekomFragment()
 
         makeCurrentFragment(mahasiswaFragment)
 
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menuMahasiswa -> makeCurrentFragment(mahasiswaFragment)
+                R.id.menuTekom -> makeCurrentFragment(tekomFragment)
             }
             true
         }
